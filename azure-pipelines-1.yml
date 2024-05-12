@@ -6,7 +6,14 @@ pool:
 trigger:
   branches:
     include:
-      - AzureDevOpsHomeTask
+      - master
+
+schedules:
+- cron: "0 9 * * *"  
+  displayName: Daily 9:00 AM Run
+  branches:
+    include:
+      - master  
 
 steps:
 
@@ -57,6 +64,12 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+    PathtoPublish: '$(build.artifactstagingdirectory)/logs'
     ArtifactName: '$(Parameters.ArtifactName)'
   condition: succeededOrFailed()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Screenshots'
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)/Screenshots'
+    ArtifactName: 'Screenshots'
