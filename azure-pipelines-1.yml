@@ -64,12 +64,12 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)/logs'
+    PathtoPublish: '$(Build.SourcesDirectory)/TestLayer_UI/bin/Debug/net6.0/logs'
     ArtifactName: '$(Parameters.ArtifactName)'
   condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Screenshots'
   inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)/Screenshots'
+    PathtoPublish: '$(Build.SourcesDirectory)/TestLayer_UI/bin/Debug/net6.0/Screenshots'
     ArtifactName: 'Screenshots'
