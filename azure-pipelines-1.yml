@@ -42,10 +42,16 @@ steps:
     projects: '**\*.sln'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Run unit tests'
+  displayName: 'Run API tests'
   inputs:
     command: 'test'
-    projects: '**\*.sln'
+    projects: '**/ApiAndUi/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run UI tests'
+  inputs:
+    command: 'test'
+    projects: '**/TestLayer_UI/*.csprojn'
 
 
 - task: PublishBuildArtifacts@1
