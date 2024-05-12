@@ -51,7 +51,7 @@ steps:
   displayName: 'Run UI tests'
   inputs:
     command: 'test'
-    projects: '**/TestLayer_UI/*.csprojn'
+    projects: '**/TestLayer_UI/*.csproj'
 
 
 - task: PublishBuildArtifacts@1
