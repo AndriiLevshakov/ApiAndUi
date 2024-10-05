@@ -18,9 +18,9 @@ schedules:
 steps:
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 2.2.x'
+  displayName: 'Use .NET Core sdk 6.0'
   inputs:
-    version: 2.2.x
+    version: 6.0
     includePreviewVersions: true
     performMultiLevelLookup: true
 
@@ -31,9 +31,9 @@ steps:
     projects: '**/*.csproj'
 
 - task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.4.1'
+  displayName: 'Use NuGet 5.8'
   inputs:
-    versionSpec: 4.4.1
+    versionSpec: 5.8
     checkLatest: true
 
 - task: NuGetCommand@2
@@ -69,7 +69,7 @@ steps:
   condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Screenshots'
   inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)/TestLayer_UI/bin/Debug/net6.0/Screenshots'
-    ArtifactName: 'Screenshots'
+    pathtopublish: $(System.DefaultWorkingDirectory)/Screenshots
+    artifactname: 'Screenshots'
+  condition: always()
